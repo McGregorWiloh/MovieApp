@@ -12,8 +12,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.mcgregor.movieapp.MovieCard
+import com.mcgregor.movieapp.model.Movie
+import com.mcgregor.movieapp.model.getMovies
 import com.mcgregor.movieapp.navigation.MovieScreens
+import com.mcgregor.movieapp.widgets.MovieCard
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -21,7 +23,7 @@ fun HomeScreen(navController: NavController) {
 
     Scaffold(topBar = {
         TopAppBar(
-            backgroundColor = Color.Magenta,
+            backgroundColor = Color.LightGray,
             elevation = 50.dp
         ) {
             Text(text = "Movies", fontWeight = FontWeight.Bold)
@@ -36,16 +38,7 @@ fun HomeScreen(navController: NavController) {
 @Composable
 fun MainContent(
     navController: NavController,
-    movieList: List<String> = listOf(
-        "Avatar",
-        "300",
-        "Harry Potter",
-        "Life",
-        "Avatar",
-        "300",
-        "Harry Potter",
-        "Life"
-    )
+    movieList: List<Movie> = getMovies()
 ) {
 
     Surface(color = MaterialTheme.colors.background) {
